@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "short",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-04-01",
+  "logpush": true,
+  "observability": { "enabled": true },
+  // short.52labs.us attaches as a custom domain (Cloudflare manages the DNS
+  // record). The apex/other subdomains on 52labs.us are untouched.
+  "routes": [{ "pattern": "short.52labs.us", "custom_domain": true }],
+  "kv_namespaces": [
+    {
+      "binding": "LINKS",
+      "id": "650e9b9bc9524926a1c7b7465db911d0"
+    }
+  ]
+}
