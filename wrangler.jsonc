@@ -5,9 +5,13 @@
   "compatibility_date": "2026-04-01",
   "logpush": true,
   "observability": { "enabled": true },
-  // short.52labs.us attaches as a custom domain (Cloudflare manages the DNS
-  // record). The apex/other subdomains on 52labs.us are untouched.
-  "routes": [{ "pattern": "short.52labs.us", "custom_domain": true }],
+  // short.52labs.us and go.52labs.us both attach as custom domains (Cloudflare
+  // manages each DNS record). They share one Worker + KV namespace, so links are
+  // identical on either host. The apex/other subdomains on 52labs.us are untouched.
+  "routes": [
+    { "pattern": "short.52labs.us", "custom_domain": true },
+    { "pattern": "go.52labs.us", "custom_domain": true },
+  ],
   "kv_namespaces": [
     {
       "binding": "LINKS",
