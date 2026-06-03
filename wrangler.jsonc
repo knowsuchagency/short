@@ -6,16 +6,18 @@
   "logpush": true,
   "observability": { "enabled": true },
   // short.52labs.us and go.52labs.us both attach as custom domains (Cloudflare
-  // manages each DNS record). They share one Worker + KV namespace, so links are
+  // manages each DNS record). They share one Worker + D1 database, so links are
   // identical on either host. The apex/other subdomains on 52labs.us are untouched.
   "routes": [
     { "pattern": "short.52labs.us", "custom_domain": true },
     { "pattern": "go.52labs.us", "custom_domain": true },
   ],
-  "kv_namespaces": [
+  // D1 holds the links plus a historical row per click (see schema.sql).
+  "d1_databases": [
     {
-      "binding": "LINKS",
-      "id": "650e9b9bc9524926a1c7b7465db911d0"
+      "binding": "DB",
+      "database_name": "short",
+      "database_id": "e7bcd02a-d877-41da-a0ea-1e027274dc0a"
     }
   ]
 }

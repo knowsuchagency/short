@@ -6,7 +6,8 @@ description: "Create short links on short.52labs.us (a KISS Cloudflare Worker UR
 # short — URL shortener (short.52labs.us)
 
 A no-auth Cloudflare Worker that turns long URLs into `https://short.52labs.us/<code>`
-links backed by KV. Anyone can create links; every create/click is logged to
+links backed by D1 (also reachable at `https://go.52labs.us/<code>`). Anyone can
+create links; every create and every click is stored historically and logged to
 Workers observability.
 
 ## Create a short link
